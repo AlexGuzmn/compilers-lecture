@@ -6,7 +6,7 @@ void yyerror(const char *s);
 int yylex(void);
 %}
 
-%token HI BYE TIME
+%token HI BYE TIME FEELING NAME WEATHER 
 
 %%
 
@@ -26,6 +26,9 @@ query : TIME {
             struct tm *local = localtime(&now);
             printf("Chatbot: Right now the time is: %02d:%02d.\n", local->tm_hour, local->tm_min);
          }
+        | FEELING { printf("Chatbot: I do not have feelings.\n");}
+        | NAME { printf("Chatbot: My name is HELLO.\n");}
+        | WEATHER { printf("Chatbot: Check your window.\n");}
        ;
 
 %%
